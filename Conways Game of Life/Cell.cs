@@ -20,10 +20,10 @@ using System.Text;
         public State? CurrentState { get; set; }
         public State? FutureState = null;
         private RectangleShape cellRect;
-        public Cell(Vector2f location, State state = State.Dead)
+        public Cell(Vector2f location, Vector2f size, State state = State.Dead)
         {
             CurrentState = state;
-            cellRect = new RectangleShape(new Vector2f(WindowSize.Width/CellGridSize.Width, WindowSize.Height/CellGridSize.Height));
+            cellRect = new RectangleShape(size);
             cellRect.Position = location;
         }
 

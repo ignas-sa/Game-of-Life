@@ -15,6 +15,7 @@ namespace Conways_Game_of_Life
         public static RenderWindow window;
         private static Timer timer = new Timer();
         private static CellGrid cellGrid;
+        private static bool mouseButtonPressed = false;
         
         static void Main(string[] args)
         {
@@ -22,29 +23,72 @@ namespace Conways_Game_of_Life
             WindowSize.Width = width;
             WindowSize.Height = height;
             window = new RenderWindow(new VideoMode((uint)width, (uint)height), "Conway's Game of Life");
-            cellGrid = new CellGrid();
+            cellGrid = new CellGrid(8, 8);
 
             timer.Enabled = false;
+            timer.Interval = 20;
             timer.Elapsed += TimerTick;
             window.Closed += OnClose;
+            window.LostFocus += OnFocusLost;
+            window.MouseButtonPressed += OnMousePressed;
+            window.MouseButtonReleased += OnMouseReleased;
+            window.KeyPressed += OnKeyPressed;
+
+            while (window.IsOpen)
+            {
+                window.DispatchEvents();
+                window.Clear(Color.White);
+                cellGrid.Draw();
+                window.Display();
+            }
         }
 
         private static void TimerTick(object sender, ElapsedEventArgs e)
         {
             cellGrid.CalculateNext();
-            Draw();
-        }
-
-        private static void Draw()
-        {
-            window.Clear();
-            cellGrid.Draw();
-            window.Display();
         }
 
         private static void OnClose(object sender, EventArgs e)
         {
             window.Close();
+        }
+
+        private static void OnFocusLost(object sender, EventArgs e)
+        {
+            timer.Enabled = false;
+        }
+
+        private static void OnMousePressed(object sender, MouseButtonEventArgs e)
+        {
+            mouseButtonPressed = true;
+            if (!timer.Enabled)
+                cellGrid.ChangeCellFromMouse(e);
+        }
+
+        private static void OnMouseReleased(object sender, MouseButtonEventArgs e)
+        {
+            mouseButtonPressed = false;
+        }
+
+        private static void OnKeyPressed(object sender, KeyEventArgs e)
+        {
+            switch (e.Code)
+            {
+                case Keyboard.Key.Space:
+                    timer.Enabled = !timer.Enabled;
+                    if (!timer.Enabled)
+                        cellGrid.PurgeFutureStates();
+                    Console.WriteLine($"{timer.Enabled}");
+                    break;
+                case Keyboard.Key.Add:
+                    timer.Interval += 5;
+                    break;
+                case Keyboard.Key.Subtract:
+                    timer.Interval -= 5;
+                    break;
+                case Keyboard.Key.F1:    // help screen
+                    break;
+            }
         }
     }
 }
