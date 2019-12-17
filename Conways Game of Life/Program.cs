@@ -80,7 +80,8 @@ namespace Conways_Game_of_Life
                     timer.Interval += deltaInterval;
                     break;
                 case Keyboard.Key.Subtract:
-                    timer.Interval -= deltaInterval;
+                    if (timer.Interval > deltaInterval)
+                        timer.Interval -= deltaInterval;
                     break;
                 case Keyboard.Key.F1:    // help screen
                     break;
