@@ -33,7 +33,6 @@ namespace Conways_Game_of_Life
 
         public void CalculateNext()
         {
-            PushToCurrent();
             for (int x = 0; x < cellGrid.GetLength(0); x++)
             {
                 for (int y = 0; y < cellGrid.GetLength(1); y++)
@@ -49,6 +48,7 @@ namespace Conways_Game_of_Life
                             : State.Dead;
                 }
             }
+            PushToCurrent();
         }
 
         public void Draw()
@@ -98,25 +98,8 @@ namespace Conways_Game_of_Life
 
         private void PushToCurrent()
         {
-            bool canPush = true;
-            for (int x = 0; x < cellGrid.GetLength(0) && canPush; x++)
-            {
-                for (int y = 0; y < cellGrid.GetLength(1) && canPush; y++)
-                    if (cellGrid[x, y].FutureState == null || futureCellGrid[x, y].CurrentState == null)
-                        canPush = false;
-            }
-
-            if (canPush)
-            {
-                for (int x = 0; x < cellGrid.GetLength(0); x++)
-                {
-                    for (int y = 0; y < cellGrid.GetLength(1); y++)
-                    {
-                        cellGrid[x, y].CurrentState = cellGrid[x, y].FutureState;
-                        cellGrid[x, y].FutureState = futureCellGrid[x, y].CurrentState;
-                    }
-                }
-            }
+            foreach (var cell in cellGrid)
+                cell.CurrentState = cell.FutureState;
         }
 
         private int CountNeighbours(int X, int Y)
