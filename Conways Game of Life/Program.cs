@@ -16,6 +16,7 @@ namespace Conways_Game_of_Life
         private static Timer timer = new Timer();
         private static CellGrid cellGrid;
         private static bool mouseButtonPressed = false;
+        private static int deltaInterval = 5;
         
         static void Main(string[] args)
         {
@@ -76,10 +77,10 @@ namespace Conways_Game_of_Life
                         cellGrid.PurgeFutureStates();
                     break;
                 case Keyboard.Key.Add:
-                    timer.Interval += 5;
+                    timer.Interval += deltaInterval;
                     break;
                 case Keyboard.Key.Subtract:
-                    timer.Interval -= 5;
+                    timer.Interval -= deltaInterval;
                     break;
                 case Keyboard.Key.F1:    // help screen
                     break;
