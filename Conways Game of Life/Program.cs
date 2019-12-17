@@ -22,8 +22,9 @@ namespace Conways_Game_of_Life
             int width = 800, height = 450;
             WindowSize.Width = width;
             WindowSize.Height = height;
+            int cellSizeX = 8, cellSizeY = 8;
             window = new RenderWindow(new VideoMode((uint)width, (uint)height), "Conway's Game of Life");
-            cellGrid = new CellGrid(8, 8);
+            cellGrid = new CellGrid(cellSizeX, cellSizeY);
 
             timer.Enabled = false;
             timer.Interval = 20;
