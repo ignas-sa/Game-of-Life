@@ -126,9 +126,9 @@ namespace Conways_Game_of_Life
         private int CountNeighbours(int X, int Y)
         {
             int neighbours = 0 - (int)cellGrid[X, Y].CurrentState;
-            for (int x = X - 1; x < X - 2; x++)
+            for (int x = X - 1; x < X + 2; x++)
             {
-                for (int y = Y - 1; y < Y - 2; y++)
+                for (int y = Y - 1; y < Y + 2; y++)
                 {
                     if (x >= 0 && x < cellGrid.GetLength(0) &&
                         y >= 0 && y < cellGrid.GetLength(1))
