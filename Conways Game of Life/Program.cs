@@ -78,7 +78,6 @@ namespace Conways_Game_of_Life
                     timer.Enabled = !timer.Enabled;
                     if (!timer.Enabled)
                         cellGrid.PurgeFutureStates();
-                    Console.WriteLine($"{timer.Enabled}");
                     break;
                 case Keyboard.Key.Add:
                     timer.Interval += 5;
