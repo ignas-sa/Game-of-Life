@@ -27,6 +27,7 @@ namespace Conways_Game_of_Life
 
             timer.Enabled = false;
             timer.Interval = 20;
+            timer.AutoReset = true;
             timer.Elapsed += TimerTick;
             window.Closed += OnClose;
             window.LostFocus += OnFocusLost;
