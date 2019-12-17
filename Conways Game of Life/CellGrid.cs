@@ -38,19 +38,15 @@ namespace Conways_Game_of_Life
             {
                 for (int y = 0; y < cellGrid.GetLength(1); y++)
                 {
-                    if (cellGrid[x, y].CurrentState == State.Dead)
-                    {
-                        futureCellGrid[x, y].CurrentState = (CountNeighbours(x, y) == 3) 
+                    int neighbours = CountNeighbours(x, y);
+                    if (cellGrid[x, y].CurrentState == State.Alive)
+                        cellGrid[x, y].FutureState = (neighbours == 2 || neighbours == 3)
                             ? State.Alive
                             : State.Dead;
-                    }
                     else
-                    {
-                        int neighbours = CountNeighbours(x, y);
-                        futureCellGrid[x, y].CurrentState = (neighbours < 2 || neighbours > 3)
-                            ? State.Dead
-                            : State.Alive;
-                    }
+                        cellGrid[x, y].FutureState = (neighbours == 3)
+                            ? State.Alive
+                            : State.Dead;
                 }
             }
         }
