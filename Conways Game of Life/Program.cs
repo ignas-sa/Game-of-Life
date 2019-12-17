@@ -30,7 +30,6 @@ namespace Conways_Game_of_Life
             timer.AutoReset = true;
             timer.Elapsed += TimerTick;
             window.Closed += OnClose;
-            window.LostFocus += OnFocusLost;
             window.MouseButtonPressed += OnMousePressed;
             window.MouseButtonReleased += OnMouseReleased;
             window.KeyPressed += OnKeyPressed;
@@ -52,11 +51,6 @@ namespace Conways_Game_of_Life
         private static void OnClose(object sender, EventArgs e)
         {
             window.Close();
-        }
-
-        private static void OnFocusLost(object sender, EventArgs e)
-        {
-            timer.Enabled = false;
         }
 
         private static void OnMousePressed(object sender, MouseButtonEventArgs e)
