@@ -77,7 +77,9 @@ namespace Conways_Game_of_Life
 
         private void InvertCellState(ref Cell cell)
         {
-            cell.CurrentState = (State)(((int)cell.CurrentState + 1) % 2);
+            cell.CurrentState = (cell.CurrentState != null)
+                ? (State) (((int) cell.CurrentState + 1) % 2)
+                : State.Alive;
         }
 
         private Color GetColor(Cell cell)
