@@ -22,8 +22,6 @@ namespace Conways_Game_of_Life
                     Grid.Append(new Vertex(new Vector2f(WindowSize.Width, y), color));
                 }
             }
-
-            Grid.PrimitiveType = PrimitiveType.Lines;
         }
     }
 }
