@@ -83,6 +83,11 @@ namespace Conways_Game_of_Life
                     if (timer.Interval > deltaInterval)
                         timer.Interval -= deltaInterval;
                     break;
+                case Keyboard.Key.C:
+                    if (timer.Enabled)
+                        timer.Enabled = !timer.Enabled;
+                    cellGrid.Clear();
+                    break;
                 case Keyboard.Key.F1:    // help screen
                     break;
             }
