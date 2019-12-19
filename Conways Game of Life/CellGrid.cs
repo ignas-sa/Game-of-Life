@@ -102,12 +102,12 @@ namespace Conways_Game_of_Life
             
             if (cell.CurrentState == cell.FutureState || cell.FutureState == null)
                 color = (cell.CurrentState == State.Alive)
-                    ? Color.Black
-                    : Color.White;
+                    ? cAliveColor
+                    : cDeadColor;
             else
                 color = (cell.FutureState == State.Alive)
-                    ? Color.Cyan
-                    : Color.Red;
+                    ? fAliveColor
+                    : fDeadColor;
 
             return color;
         }
