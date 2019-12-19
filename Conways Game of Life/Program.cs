@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Timers;
 using SFML;
 using SFML.Graphics;
@@ -57,14 +57,22 @@ namespace Conways_Game_of_Life
 
         private static void OnMousePressed(object sender, MouseButtonEventArgs e)
         {
-            mouseButtonPressed = true;
-            if (!timer.Enabled)
-                cellGrid.ChangeCellFromMouse(e);
+            if (!timer.Enabled && e.Button == Mouse.Button.Left)
+            {
+                cellGrid.ChangeCellFromMouse(e.X, e.Y);
+                mouseButtonPressed = true;
+            }
         }
 
         private static void OnMouseReleased(object sender, MouseButtonEventArgs e)
         {
             mouseButtonPressed = false;
+        }
+
+        private static void OnMouseMoved(object sender, MouseMoveEventArgs e)
+        {
+            if (mouseButtonPressed)
+                cellGrid.ChangeCellFromMouse(e.X, e.Y);
         }
 
         private static void OnKeyPressed(object sender, KeyEventArgs e)
