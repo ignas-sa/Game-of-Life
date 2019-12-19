@@ -68,6 +68,7 @@ namespace Conways_Game_of_Life
         private static void OnMouseReleased(object sender, MouseButtonEventArgs e)
         {
             mouseButtonPressed = false;
+            cellGrid.ResetDrawnOverFlags();
         }
 
         private static void OnMouseMoved(object sender, MouseMoveEventArgs e)
