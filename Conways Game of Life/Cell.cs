@@ -19,6 +19,8 @@ using System.Text;
     {
         public State? CurrentState { get; set; }
         public State? FutureState = null;
+        public bool DrawnOver = false;
+        
         private RectangleShape cellRect;
         public Cell(Vector2f location, Vector2f size, State state = State.Dead)
         {
