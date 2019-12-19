@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Conway_s_Game_of_Life;
 using SFML.Graphics;
 using SFML.System;
@@ -76,10 +76,8 @@ namespace Conways_Game_of_Life
 
         public void ChangeCellFromMouse(MouseButtonEventArgs e)
         {
-            int X = e.X / (WindowSize.Width / CellGridSize.Width),    // get mouse coordinates, relative to cells
-                Y = e.Y / (WindowSize.Height / CellGridSize.Height);
-            if (X < cellGrid.GetLength(0) && Y < cellGrid.GetLength(1))
-                InvertCellState(ref cellGrid[X, Y]);
+            if (GetCellFromMouse(e) != null)
+                InvertCellState(ref GetCellFromMouse(e));
         }
 
         public void Generate()
