@@ -82,6 +82,12 @@ namespace Conways_Game_of_Life
                 : State.Alive;
         }
 
+        public void Clear()
+        {
+            foreach (var cell in cellGrid)
+                cell.CurrentState = State.Dead;
+        }
+
         private Color GetColor(Cell cell)
         {
             Color color;
