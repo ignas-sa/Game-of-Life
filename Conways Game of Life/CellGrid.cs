@@ -14,6 +14,11 @@ namespace Conways_Game_of_Life
     {
         private Cell[,] cellGrid { get; }
         private Cell[,] futureCellGrid { get; }
+
+        private Color cAliveColor = Color.Black,
+                      cDeadColor = Color.White,
+                      fAliveColor = Color.Cyan,
+                      fDeadColor = Color.Red;
         
         public CellGrid(int sizeX, int sizeY)
         {
