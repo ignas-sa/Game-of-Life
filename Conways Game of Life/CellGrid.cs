@@ -14,6 +14,7 @@ namespace Conways_Game_of_Life
     {
         private Cell[,] cellGrid { get; }
         private Cell[,] futureCellGrid { get; }
+        private Random RSG = new Random();    // random state generator
 
         private Color cAliveColor = Color.Black,    // c - current state
                       cDeadColor = Color.White,
@@ -78,6 +79,12 @@ namespace Conways_Game_of_Life
                 Y = e.Y / (WindowSize.Height / CellGridSize.Height);
             if (X < cellGrid.GetLength(0) && Y < cellGrid.GetLength(1))
                 InvertCellState(ref cellGrid[X, Y]);
+        }
+
+        public void Generate()
+        {
+            foreach (var cell in cellGrid)
+                cell.CurrentState = (State) RSG.Next(2);
         }
 
         private void InvertCellState(ref Cell cell)
