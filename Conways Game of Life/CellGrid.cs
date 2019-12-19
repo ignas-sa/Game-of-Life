@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Conway_s_Game_of_Life;
 using SFML.Graphics;
 using SFML.System;
@@ -84,6 +84,12 @@ namespace Conways_Game_of_Life
         {
             foreach (var cell in cellGrid)
                 cell.CurrentState = (State) RSG.Next(2);
+        }
+
+        public void ResetDrawnOverFlags()
+        {
+            foreach (var cell in cellGrid)
+                cell.DrawnOver = false;
         }
 
         private void InvertCellState(ref Cell cell)
