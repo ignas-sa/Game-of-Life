@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Timers;
 using SFML;
 using SFML.Graphics;
@@ -34,6 +34,7 @@ namespace Conways_Game_of_Life
             window.Closed += OnClose;
             window.MouseButtonPressed += OnMousePressed;
             window.MouseButtonReleased += OnMouseReleased;
+            window.MouseMoved += OnMouseMoved;
             window.KeyPressed += OnKeyPressed;
 
             while (window.IsOpen)
