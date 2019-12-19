@@ -88,6 +88,13 @@ namespace Conways_Game_of_Life
                         timer.Enabled = !timer.Enabled;
                     cellGrid.Clear();
                     break;
+                case Keyboard.Key.R:
+                    if (!timer.Enabled)
+                    {
+                        cellGrid.Clear();
+                        cellGrid.Generate();
+                    }
+                    break;
                 case Keyboard.Key.F1:    // help screen
                     break;
             }
