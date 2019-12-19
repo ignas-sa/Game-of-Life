@@ -9,3 +9,4 @@ A Conway's Game of Life implementation in .NET Core and C#.
 * Cells can be cleared by pressing **C**;
 * The simulation can be paused by pressing **Space**;
 * **+** and **-** can increase and decrease the interval between cell state calculations, respectively.
+* Clicking **G** will toggle grid drawing to aid in drawing cells.
