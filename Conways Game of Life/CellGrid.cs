@@ -99,6 +99,7 @@ namespace Conways_Game_of_Life
             {
                 cell.CurrentState = State.Dead;
                 cell.FutureState = null;
+                cell.DrawnOver = false;
             }
         }
 
