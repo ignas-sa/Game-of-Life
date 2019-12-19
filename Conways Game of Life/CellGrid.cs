@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Conway_s_Game_of_Life;
 using SFML.Graphics;
 using SFML.System;
@@ -77,7 +77,10 @@ namespace Conways_Game_of_Life
         public void ChangeCellFromMouse(int x, int y)
         {
             if (GetCellFromMouse(x, y) != null && !GetCellFromMouse(x, y).DrawnOver)
+            {
                 InvertCellState(ref GetCellFromMouse(x, y));
+                GetCellFromMouse(x, y).DrawnOver = true;
+            }
         }
 
         public void Generate()
