@@ -3,6 +3,7 @@ using System.Timers;
 using SFML;
 using SFML.Graphics;
 using SFML.Window;
+using static Conways_Game_of_Life.MiscDrawables;
 
 namespace Conways_Game_of_Life
 {
@@ -16,6 +17,7 @@ namespace Conways_Game_of_Life
         private static Timer timer = new Timer();
         private static CellGrid cellGrid;
         private static bool mouseButtonPressed = false;
+        private static bool drawGrid = false;
         private static int deltaInterval = 5;
         
         static void Main(string[] args)
@@ -26,6 +28,7 @@ namespace Conways_Game_of_Life
             int cellSizeX = 8, cellSizeY = 8;
             window = new RenderWindow(new VideoMode((uint)width, (uint)height), "Conway's Game of Life");
             cellGrid = new CellGrid(cellSizeX, cellSizeY);
+            InitializeGrid(cellSizeX, cellSizeY);
 
             timer.Enabled = false;
             timer.Interval = 20;
@@ -42,6 +45,8 @@ namespace Conways_Game_of_Life
                 window.DispatchEvents();
                 window.Clear(Color.White);
                 cellGrid.Draw();
+                if (drawGrid)
+                    window.Draw(Grid);
                 window.Display();
             }
         }
@@ -104,6 +109,9 @@ namespace Conways_Game_of_Life
                         cellGrid.Clear();
                         cellGrid.Generate();
                     }
+                    break;
+                case Keyboard.Key.G:
+                    drawGrid = !drawGrid;
                     break;
                 case Keyboard.Key.F1:    // help screen
                     break;
