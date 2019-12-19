@@ -76,7 +76,7 @@ namespace Conways_Game_of_Life
 
         public void ChangeCellFromMouse(MouseButtonEventArgs e)
         {
-            if (GetCellFromMouse(e) != null)
+            if (GetCellFromMouse(e) != null && !GetCellFromMouse(e).DrawnOver)
                 InvertCellState(ref GetCellFromMouse(e));
         }
 
