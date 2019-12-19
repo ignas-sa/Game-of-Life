@@ -74,10 +74,10 @@ namespace Conways_Game_of_Life
                 cell.FutureState = null;
         }
 
-        public void ChangeCellFromMouse(MouseButtonEventArgs e)
+        public void ChangeCellFromMouse(int x, int y)
         {
-            if (GetCellFromMouse(e) != null && !GetCellFromMouse(e).DrawnOver)
-                InvertCellState(ref GetCellFromMouse(e));
+            if (GetCellFromMouse(x, y) != null && !GetCellFromMouse(x, y).DrawnOver)
+                InvertCellState(ref GetCellFromMouse(x, y));
         }
 
         public void Generate()
@@ -119,10 +119,10 @@ namespace Conways_Game_of_Life
             return color;
         }
 
-        private ref Cell GetCellFromMouse(MouseButtonEventArgs e)
+        private ref Cell GetCellFromMouse(int x, int y)
         {
-            int X = e.X / (WindowSize.Width / CellGridSize.Width),    // get mouse coordinates, relative to cells
-                Y = e.Y / (WindowSize.Height / CellGridSize.Height);
+            int X = x / (WindowSize.Width / CellGridSize.Width),    // get mouse coordinates, relative to cells
+                Y = y / (WindowSize.Height / CellGridSize.Height);
             if (X < cellGrid.GetLength(0) && Y < cellGrid.GetLength(1))
                 return ref cellGrid[X, Y];
             return ref nullVar;
